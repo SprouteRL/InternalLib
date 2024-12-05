@@ -8,7 +8,7 @@ namespace storage // In case you are wondering why I use inline so much, it alwa
 
 
 	// i made this just for testing in assault cube, but you can use it aswell
-	namespace your_game
+	namespace assault_cube
 	{
 #define AddBase(x) ((uintptr_t)(GetModuleHandleA(nullptr)) + (x))
 
@@ -21,6 +21,7 @@ namespace storage // In case you are wondering why I use inline so much, it alwa
 			inline uintptr_t localPlayerOffset = 0x17E0A8;
 
 			inline uintptr_t healthOffset = 0xEC;
+			inline uintptr_t arAmmo = 0xEC;
 		}
 		namespace definitios
 		{
