@@ -9,9 +9,8 @@
 int main()
 {
 	std::wstring targetProcess = L"ac_client.exe";
-	std::string targetWindowName = "Assault Cube";
 
-	std::unique_ptr<Memory> memory = std::make_unique<Memory>(targetProcess, targetWindowName);
+	std::unique_ptr<Memory> memory = std::make_unique<Memory>(targetProcess);
 	if (!memory->Init())
 	{
 		// while you can use a function to clean up its not quite recommended, 
@@ -53,21 +52,7 @@ int main()
 		return 1;
 	}
 
-	HMODULE kernel32 = GetModuleHandle(L"kernel32.dll");
-	if (kernel32 == NULL) {
-		std::cerr << "Failed to get handle for kernel32.dll.\n";
-		system("pause");
-		return 1;
-	}
-
-	FARPROC loadLibraryAddr = GetProcAddress(kernel32, "LoadLibraryA");
-	if (loadLibraryAddr == NULL) {
-		std::cerr << "Failed to get address of LoadLibraryA.\n";
-		system("pause");
-		return 1;
-	}
-
-	HANDLE remoteThread = CreateRemoteThread(memory->ProcHandle, NULL, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(loadLibraryAddr), allocatedMem, 0, NULL);
+	HANDLE remoteThread = CreateRemoteThread(memory->ProcHandle, NULL, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(LoadLibraryA), allocatedMem, 0, NULL);
 	if (remoteThread == INVALID_HANDLE_VALUE) {
 		std::cerr << "Failed to get create remote thread.\n";
 		system("pause");
@@ -80,11 +65,11 @@ int main()
 	GetExitCodeThread(remoteThread, &threadExitCode);
 	if (threadExitCode == NULL) 
 	{
-		std::cerr << "Failed to inject '" << dllName.c_str() << "' to target process: " << targetWindowName.c_str() << ".\n";
+		std::wcerr << "Failed to inject '" << dllName.c_str() << "' to target process: " << targetProcess.c_str() << ".\n";
 		system("pause");
 		return 1;
 	}
 
-	std::cout << "Injected '" << dllName.c_str() << "' to target process: " << targetWindowName.c_str() << ".\n";
+	std::wcout << "Injected '" << dllName.c_str() << "' to target process: " << targetProcess.c_str() << ".\n";
 	system("pause");
 }

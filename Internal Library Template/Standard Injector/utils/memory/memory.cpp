@@ -27,17 +27,6 @@ bool Memory::Init()
 		return false;
 	}
 
-	// Find Window
-	if (!ProcWindowName.empty())
-	{
-		ProcWindow = FindWindowA(0, ProcWindowName.c_str());
-		if (ProcWindow == INVALID_HANDLE_VALUE)
-		{
-			std::wcerr << L"Failed to find target window: " << ProcWindowName.c_str() << L".\n";
-			return false;
-		}
-	}
-
 	// Find Handle
 	ProcHandle = OpenProcess(PROCESS_ALL_ACCESS, 0, ProcId);
 	if (ProcHandle == INVALID_HANDLE_VALUE)

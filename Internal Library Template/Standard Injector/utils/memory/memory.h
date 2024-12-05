@@ -9,23 +9,19 @@ struct Memory
 {
 public: // Variables
 	std::wstring ProcName;
-	std::string ProcWindowName;
 	DWORD ProcId;
 	HANDLE ProcHandle;
-	HWND ProcWindow;
 
 public: // Functions
 	bool Init();
 
-	Memory(const std::wstring& procName = L"", const std::string& procWindowName = "") // constructor
+	Memory(const std::wstring& procName = L"") // constructor
 	{
 		ProcName = procName;
-		ProcWindowName = procWindowName;
 	}
 	~Memory()
 	{
 		if (ProcHandle) CloseHandle(ProcHandle);
-		if (ProcWindow) CloseHandle(ProcWindow);
 	}
 
 	template <typename Ty>
