@@ -41,5 +41,17 @@
     <ClInclude Include="utils\functions\functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="utils\vector\vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\vector\vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\vector\vector4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\vector\all_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

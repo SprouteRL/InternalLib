@@ -161,6 +161,10 @@
     <ClInclude Include="utils\functions\functions.h" />
     <ClInclude Include="utils\memory\memory.h" />
     <ClInclude Include="utils\storage\storage.h" />
+    <ClInclude Include="utils\vector\all_vector.h" />
+    <ClInclude Include="utils\vector\vector2.h" />
+    <ClInclude Include="utils\vector\vector3.h" />
+    <ClInclude Include="utils\vector\vector4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
