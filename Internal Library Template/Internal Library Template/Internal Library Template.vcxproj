@@ -153,9 +153,13 @@
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\exploit.cpp" />
+    <ClCompile Include="utils\functions\functions.cpp" />
+    <ClCompile Include="utils\memory\memory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\exploit.h" />
+    <ClInclude Include="utils\functions\functions.h" />
+    <ClInclude Include="utils\memory\memory.h" />
     <ClInclude Include="utils\storage\storage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

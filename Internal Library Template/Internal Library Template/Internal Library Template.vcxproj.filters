@@ -21,12 +21,24 @@
     <ClCompile Include="src\exploit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="utils\memory\memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\functions\functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\exploit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utils\storage\storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\memory\memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\functions\functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

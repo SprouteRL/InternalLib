@@ -38,7 +38,6 @@ int main()
 	}
 
 	x.close();
-	//std::cout << "Selected dll path: '" << fullPath << "'.\n\n";
 
 	void* allocatedMem = memory->AllocateMemory(pathLength);
 	if (allocatedMem == nullptr)
@@ -47,8 +46,6 @@ int main()
 		system("pause");
 		return 1;
 	}
-	std::cout << "Allocated memory: 0x" << std::hex << allocatedMem << std::dec << ".\n";
-
 	if (!memory->WriteMemory(reinterpret_cast<uintptr_t>(allocatedMem), fullPath.c_str(), pathLength))
 	{
 		std::cerr << "Failed to write memory. Last thread error: " << utilsFuncs::GetLastErrorStr() << "\n";
@@ -71,6 +68,11 @@ int main()
 	}
 
 	HANDLE remoteThread = CreateRemoteThread(memory->ProcHandle, NULL, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(loadLibraryAddr), allocatedMem, 0, NULL);
+	if (remoteThread == INVALID_HANDLE_VALUE) {
+		std::cerr << "Failed to get create remote thread.\n";
+		system("pause");
+		return 1;
+	}
 
 	WaitForSingleObject(remoteThread, INFINITE);
 	
